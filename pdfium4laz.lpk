@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="pdfium4laz"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="paweld"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="src"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="Object Pascal bindings and visual components for the PDFium library."/>
+    <License Value="MIT"/>
+    <Version Major="1"/>
+    <Files Count="13">
+      <Item1>
+        <Filename Value="src/PdfiumLib.pas"/>
+        <UnitName Value="PdfiumLib"/>
+      </Item1>
+      <Item2>
+        <Filename Value="src/PdfiumCore.pas"/>
+        <UnitName Value="PdfiumCore"/>
+      </Item2>
+      <Item3>
+        <Filename Value="src/PdfiumText.pas"/>
+        <UnitName Value="PdfiumText"/>
+      </Item3>
+      <Item4>
+        <Filename Value="src/PdfiumLinks.pas"/>
+        <UnitName Value="PdfiumLinks"/>
+      </Item4>
+      <Item5>
+        <Filename Value="src/PdfiumBookmarks.pas"/>
+        <UnitName Value="PdfiumBookmarks"/>
+      </Item5>
+      <Item6>
+        <Filename Value="src/PdfiumAttachments.pas"/>
+        <UnitName Value="PdfiumAttachments"/>
+      </Item6>
+      <Item7>
+        <Filename Value="src/PdfiumImages.pas"/>
+        <UnitName Value="PdfiumImages"/>
+      </Item7>
+      <Item8>
+        <Filename Value="src/PdfiumMerge.pas"/>
+        <UnitName Value="PdfiumMerge"/>
+      </Item8>
+      <Item9>
+        <Filename Value="src/PdfiumRender.pas"/>
+        <UnitName Value="PdfiumRender"/>
+      </Item9>
+      <Item10>
+        <Filename Value="src/PdfiumThumbnailCache.pas"/>
+        <UnitName Value="PdfiumThumbnailCache"/>
+      </Item10>
+      <Item11>
+        <Filename Value="src/PdfiumViewer.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="PdfiumViewer"/>
+      </Item11>
+      <Item12>
+        <Filename Value="src/PdfiumThumbnails.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="PdfiumThumbnails"/>
+      </Item12>
+      <Item13>
+        <Filename Value="src/PdfiumPrint.pas"/>
+        <UnitName Value="PdfiumPrint"/>
+      </Item13>
+    </Files>
+    <CompatibilityMode Value="True"/>
+    <RequiredPkgs Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

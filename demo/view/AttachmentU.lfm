@@ -1,0 +1,55 @@
+object AttachmentF: TAttachmentF
+  Left = 515
+  Height = 437
+  Top = 167
+  Width = 541
+  Caption = 'Pdfium4Laz Viewer - Attachment'
+  ClientHeight = 437
+  ClientWidth = 541
+  KeyPreview = True
+  Position = poOwnerFormCenter
+  LCLVersion = '5.99.0.0'
+  OnKeyDown = FormKeyDown
+  object Panel1: TPanel
+    Left = 0
+    Height = 45
+    Top = 392
+    Width = 541
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 45
+    ClientWidth = 541
+    TabOrder = 0
+    object bClose: TButton
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel1
+      AnchorSideBottom.Side = asrBottom
+      Left = 458
+      Height = 25
+      Top = 12
+      Width = 75
+      Anchors = [akRight, akBottom]
+      BorderSpacing.Top = 8
+      BorderSpacing.Right = 8
+      BorderSpacing.Bottom = 8
+      Caption = 'Close'
+      TabOrder = 0
+      OnClick = bCloseClick
+    end
+  end
+  object mAttachment: TMemo
+    Left = 0
+    Height = 392
+    Top = 0
+    Width = 541
+    Align = alClient
+    Font.Name = 'Courier New'
+    Lines.Strings = (
+      'mAttachment'
+    )
+    ParentFont = False
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
+  end
+end

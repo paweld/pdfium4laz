@@ -1,0 +1,730 @@
+object MainF: TMainF
+  Left = 230
+  Height = 593
+  Top = 75
+  Width = 1062
+  Caption = 'Pdfium4Laz Viewer'
+  ClientHeight = 593
+  ClientWidth = 1062
+  KeyPreview = True
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  object Panel3: TPanel
+    Left = 0
+    Height = 42
+    Top = 551
+    Width = 1062
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 42
+    ClientWidth = 1062
+    TabOrder = 0
+    object bClose: TButton
+      AnchorSideTop.Control = bOpen
+      AnchorSideRight.Control = Panel3
+      AnchorSideRight.Side = asrBottom
+      Left = 979
+      Height = 25
+      Top = 8
+      Width = 75
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 8
+      Caption = 'Close'
+      TabOrder = 0
+      OnClick = bCloseClick
+    end
+    object Label2: TLabel
+      AnchorSideLeft.Control = bOpen
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Side = asrBottom
+      AnchorSideBottom.Control = bOpen
+      AnchorSideBottom.Side = asrBottom
+      Left = 120
+      Height = 15
+      Top = 18
+      Width = 29
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 16
+      Caption = 'Page:'
+    end
+    object sePageNo: TSpinEdit
+      AnchorSideLeft.Control = Label2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = Label2
+      AnchorSideBottom.Side = asrBottom
+      Left = 157
+      Height = 23
+      Top = 10
+      Width = 74
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 8
+      MaxValue = 999
+      MinValue = 1
+      TabOrder = 1
+      Value = 1
+      OnChange = sePageNoChange
+    end
+    object bPrev: TButton
+      AnchorSideLeft.Control = ePageCount
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bOpen
+      Left = 315
+      Height = 25
+      Top = 8
+      Width = 32
+      BorderSpacing.Left = 16
+      Caption = '<'
+      TabOrder = 2
+      OnClick = bPrevClick
+    end
+    object bNext: TButton
+      AnchorSideLeft.Control = bPrev
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bPrev
+      Left = 349
+      Height = 25
+      Top = 8
+      Width = 32
+      BorderSpacing.Left = 2
+      Caption = '>'
+      TabOrder = 3
+      OnClick = bNextClick
+    end
+    object bOpen: TButton
+      AnchorSideLeft.Control = Panel3
+      AnchorSideTop.Control = Panel3
+      Left = 8
+      Height = 25
+      Top = 8
+      Width = 96
+      BorderSpacing.Left = 8
+      BorderSpacing.Top = 8
+      Caption = 'Open PDF'
+      TabOrder = 4
+      OnClick = bOpenClick
+    end
+    object bZoomOut: TButton
+      AnchorSideLeft.Control = bNext
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bNext
+      Left = 397
+      Height = 25
+      Top = 8
+      Width = 24
+      BorderSpacing.Left = 16
+      Caption = '-'
+      TabOrder = 5
+      OnClick = bZoomOutClick
+    end
+    object bZoomAuto: TButton
+      AnchorSideLeft.Control = bZoomOut
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bZoomOut
+      Left = 423
+      Height = 25
+      Top = 8
+      Width = 54
+      BorderSpacing.Left = 2
+      Caption = 'Auto'
+      TabOrder = 6
+      OnClick = bZoomAutoClick
+    end
+    object bZoomIn: TButton
+      AnchorSideLeft.Control = bZoomAuto
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bZoomAuto
+      Left = 479
+      Height = 25
+      Top = 8
+      Width = 24
+      BorderSpacing.Left = 2
+      Caption = '+'
+      TabOrder = 7
+      OnClick = bZoomInClick
+    end
+    object bGetText: TButton
+      AnchorSideLeft.Control = bZoomIn
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bZoomIn
+      Left = 519
+      Height = 25
+      Top = 8
+      Width = 75
+      BorderSpacing.Left = 16
+      Caption = 'Get text'
+      TabOrder = 8
+      OnClick = bGetTextClick
+    end
+    object bSaveAsImage: TButton
+      AnchorSideLeft.Control = bGetText
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bGetText
+      Left = 610
+      Height = 25
+      Top = 8
+      Width = 133
+      BorderSpacing.Left = 16
+      Caption = 'Save page as Image'
+      TabOrder = 9
+      OnClick = bSaveAsImageClick
+    end
+    object bPrint: TButton
+      AnchorSideLeft.Control = bSaveAsImage
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = bSaveAsImage
+      Left = 759
+      Height = 25
+      Top = 8
+      Width = 128
+      BorderSpacing.Left = 16
+      Caption = 'Print document'
+      TabOrder = 10
+      OnClick = bPrintClick
+    end
+    object ePageCount: TEdit
+      AnchorSideLeft.Control = sePageNo
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = sePageNo
+      AnchorSideBottom.Side = asrBottom
+      Left = 235
+      Height = 23
+      Top = 10
+      Width = 64
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 4
+      Color = clForm
+      ReadOnly = True
+      TabOrder = 11
+    end
+  end
+  object PdfViewer1: TPdfViewer
+    Left = 205
+    Height = 432
+    Top = 40
+    Width = 857
+    HorzScrollBar.Page = 1
+    VertScrollBar.Page = 1
+    Align = alClient
+    ClientHeight = 428
+    ClientWidth = 853
+    Color = 11711154
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    Zoom = 1
+    ZoomMin = 0.1
+    ZoomMax = 10
+    CenterHorizontally = True
+    CenterVertically = True
+    OnPageChanged = PdfViewer1PageChanged
+    OnLinkClick = PdfViewer1LinkClick
+    OnLinkEnter = PdfViewer1LinkEnter
+    OnLinkLeave = PdfViewer1LinkLeave
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 79
+    Top = 472
+    Width = 1062
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 79
+    ClientWidth = 1062
+    TabOrder = 2
+    object chbCenter: TCheckBox
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      Left = 8
+      Height = 19
+      Top = 8
+      Width = 82
+      BorderSpacing.Left = 8
+      BorderSpacing.Top = 8
+      Caption = 'Center page'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+      OnChange = chbCenterChange
+    end
+    object Label1: TLabel
+      AnchorSideLeft.Control = chbShowThumb
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chbCenter
+      Left = 134
+      Height = 15
+      Top = 8
+      Width = 106
+      BorderSpacing.Left = 16
+      Caption = '“Auto” zoom mode:'
+    end
+    object cbZoomMode: TComboBox
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = chbShowThumb
+      Left = 134
+      Height = 23
+      Top = 39
+      Width = 112
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'fit to page'
+        'fit to width'
+        'fit to height'
+      )
+      Style = csDropDownList
+      TabOrder = 1
+      Text = 'fit to page'
+      OnChange = cbZoomModeChange
+    end
+    object chbShowThumb: TCheckBox
+      AnchorSideLeft.Control = chbCenter
+      AnchorSideTop.Control = chbCenter
+      AnchorSideTop.Side = asrBottom
+      Left = 8
+      Height = 19
+      Top = 39
+      Width = 110
+      BorderSpacing.Top = 12
+      Caption = 'Show thumbnails'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+      OnChange = chbShowThumbChange
+    end
+    object Label4: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chbCenter
+      Left = 256
+      Height = 36
+      Top = 8
+      Width = 156
+      AutoSize = False
+      BorderSpacing.Left = 16
+      Caption = 'Text selection color and alpha:'
+      WordWrap = True
+    end
+    object clbTSColor: TColorButton
+      AnchorSideLeft.Control = Label4
+      AnchorSideTop.Control = chbShowThumb
+      Left = 256
+      Height = 25
+      Top = 39
+      Width = 80
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = clbColorChanged
+    end
+    object clbBGColor: TColorButton
+      AnchorSideLeft.Control = Label5
+      AnchorSideTop.Control = chbShowThumb
+      Left = 422
+      Height = 25
+      Top = 39
+      Width = 120
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = clbColorChanged
+    end
+    object Label5: TLabel
+      AnchorSideLeft.Control = seTSAlpha
+      AnchorSideLeft.Side = asrBottom
+      Left = 422
+      Height = 36
+      Top = 4
+      Width = 120
+      AutoSize = False
+      BorderSpacing.Left = 16
+      Caption = 'Viewer/thumbnails background color:'
+      WordWrap = True
+    end
+    object seTSAlpha: TSpinEdit
+      AnchorSideLeft.Control = clbTSColor
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chbShowThumb
+      Left = 340
+      Height = 23
+      Top = 39
+      Width = 66
+      BorderSpacing.Left = 4
+      MaxValue = 255
+      TabOrder = 3
+      OnChange = seTSAlphaChange
+    end
+    object gbUCS: TGroupBox
+      AnchorSideLeft.Control = clbBGColor
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chbCenter
+      Left = 558
+      Height = 53
+      Top = 8
+      Width = 463
+      AutoSize = True
+      BorderSpacing.Left = 16
+      Caption = 'User color schemes (background, text fill, text stroke, path fill, path stroke)'
+      ClientHeight = 33
+      ClientWidth = 459
+      TabOrder = 4
+      object clbUCSbg: TColorButton
+        AnchorSideLeft.Control = gbUCS
+        AnchorSideTop.Control = gbUCS
+        AnchorSideBottom.Side = asrBottom
+        Left = 8
+        Height = 25
+        Top = 8
+        Width = 70
+        BorderSpacing.Left = 8
+        BorderSpacing.Top = 8
+        BorderWidth = 2
+        ButtonColorSize = 16
+        ButtonColor = clBlack
+        OnColorChanged = clbColorChanged
+      end
+      object clbUCStf: TColorButton
+        AnchorSideLeft.Control = clbUCSbg
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = clbUCSbg
+        AnchorSideBottom.Side = asrBottom
+        Left = 86
+        Height = 25
+        Top = 8
+        Width = 70
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 8
+        BorderWidth = 2
+        ButtonColorSize = 16
+        ButtonColor = clBlack
+        OnColorChanged = clbColorChanged
+      end
+      object clbUCSts: TColorButton
+        AnchorSideLeft.Control = clbUCStf
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = clbUCStf
+        AnchorSideBottom.Side = asrBottom
+        Left = 164
+        Height = 25
+        Top = 8
+        Width = 70
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 8
+        BorderWidth = 2
+        ButtonColorSize = 16
+        ButtonColor = clBlack
+        OnColorChanged = clbColorChanged
+      end
+      object clbUCSpf: TColorButton
+        AnchorSideLeft.Control = clbUCSts
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = clbUCSts
+        AnchorSideBottom.Side = asrBottom
+        Left = 242
+        Height = 25
+        Top = 8
+        Width = 70
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 8
+        BorderWidth = 2
+        ButtonColorSize = 16
+        ButtonColor = clBlack
+        OnColorChanged = clbColorChanged
+      end
+      object clbUCSps: TColorButton
+        AnchorSideLeft.Control = clbUCSpf
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = clbUCSpf
+        AnchorSideBottom.Side = asrBottom
+        Left = 320
+        Height = 25
+        Top = 8
+        Width = 70
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 8
+        BorderWidth = 2
+        ButtonColorSize = 16
+        ButtonColor = clBlack
+        OnColorChanged = clbColorChanged
+      end
+      object chbUCSEnable: TCheckBox
+        AnchorSideLeft.Control = clbUCSps
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = clbUCSps
+        AnchorSideBottom.Side = asrBottom
+        Left = 398
+        Height = 19
+        Top = 14
+        Width = 53
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 8
+        BorderSpacing.Right = 8
+        Caption = 'Enable'
+        TabOrder = 0
+        OnChange = chbUCSEnableChange
+      end
+    end
+  end
+  object pc: TPageControl
+    Left = 0
+    Height = 432
+    Top = 40
+    Width = 200
+    ActivePage = tsImages
+    Align = alLeft
+    TabIndex = 2
+    TabOrder = 3
+    object tsThumbnails: TTabSheet
+      Caption = 'Thumbnails'
+      ClientHeight = 404
+      ClientWidth = 192
+      object PdfThumbnailPanel1: TPdfThumbnailPanel
+        Left = 0
+        Height = 404
+        Top = 0
+        Width = 192
+        HorzScrollBar.Page = 188
+        VertScrollBar.Page = 400
+        Align = alClient
+        AutoScroll = False
+        ClientHeight = 400
+        ClientWidth = 188
+        Color = 11711154
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 0
+        SelectedIndex = -1
+        LabelFont.Height = -11
+        OnPageCaption = PdfThumbnailPanel1PageCaption
+        OnPageClick = PdfThumbnailPanel1PageClick
+      end
+    end
+    object tsBookmarks: TTabSheet
+      Caption = 'Bookmarks'
+      ClientHeight = 404
+      ClientWidth = 192
+      object tvBookmarks: TTreeView
+        Left = 0
+        Height = 404
+        Top = 0
+        Width = 192
+        Align = alClient
+        HideSelection = False
+        ReadOnly = True
+        RowSelect = True
+        ScrollBars = ssAutoVertical
+        TabOrder = 0
+        Options = [tvoAutoItemHeight, tvoKeepCollapsedNodes, tvoReadOnly, tvoRowSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips]
+        OnAdvancedCustomDrawItem = tvBookmarksAdvancedCustomDrawItem
+        OnSelectionChanged = tvBookmarksSelectionChanged
+      end
+    end
+    object tsImages: TTabSheet
+      Caption = 'Images'
+      ClientHeight = 404
+      ClientWidth = 192
+      object lbImages: TListBox
+        Left = 0
+        Height = 354
+        Top = 0
+        Width = 192
+        Align = alClient
+        ItemHeight = 0
+        TabOrder = 0
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 50
+        Top = 354
+        Width = 192
+        Align = alBottom
+        BevelOuter = bvNone
+        ClientHeight = 50
+        ClientWidth = 192
+        TabOrder = 1
+        object bShowImg: TButton
+          Left = 8
+          Height = 25
+          Top = 16
+          Width = 75
+          Caption = 'Show'
+          TabOrder = 0
+          OnClick = bShowImgClick
+        end
+        object bSaveImg: TButton
+          Left = 96
+          Height = 25
+          Top = 16
+          Width = 75
+          Caption = 'Save'
+          TabOrder = 1
+          OnClick = bSaveImgClick
+        end
+      end
+    end
+    object tsAttachments: TTabSheet
+      Caption = 'Attachments'
+      ClientHeight = 404
+      ClientWidth = 192
+      object lbAttachments: TListBox
+        Left = 0
+        Height = 354
+        Top = 0
+        Width = 192
+        Align = alClient
+        ItemHeight = 0
+        TabOrder = 0
+      end
+      object Panel5: TPanel
+        Left = 0
+        Height = 50
+        Top = 354
+        Width = 192
+        Align = alBottom
+        BevelOuter = bvNone
+        ClientHeight = 50
+        ClientWidth = 192
+        TabOrder = 1
+        object bShowAtt: TButton
+          Left = 8
+          Height = 25
+          Top = 16
+          Width = 75
+          Caption = 'Show'
+          TabOrder = 0
+          OnClick = bShowAttClick
+        end
+        object bSaveAtt: TButton
+          Left = 96
+          Height = 25
+          Top = 16
+          Width = 75
+          Caption = 'Save'
+          TabOrder = 1
+          OnClick = bSaveAttClick
+        end
+      end
+    end
+  end
+  object Splitter1: TSplitter
+    Left = 200
+    Height = 432
+    Top = 40
+    Width = 5
+    ResizeStyle = rsLine
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 1062
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 40
+    ClientWidth = 1062
+    TabOrder = 5
+    object Label3: TLabel
+      AnchorSideLeft.Control = Panel2
+      AnchorSideTop.Control = Panel2
+      Left = 8
+      Height = 15
+      Top = 16
+      Width = 38
+      BorderSpacing.Left = 8
+      BorderSpacing.Top = 16
+      Caption = 'Search:'
+    end
+    object eSearch: TEdit
+      AnchorSideLeft.Control = Label3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = Label3
+      AnchorSideBottom.Side = asrBottom
+      Left = 54
+      Height = 23
+      Top = 8
+      Width = 272
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 8
+      TabOrder = 0
+      TextHint = 'Find in document...'
+      OnKeyDown = eSearchKeyDown
+    end
+    object bSearch: TButton
+      AnchorSideLeft.Control = eSearch
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = eSearch
+      AnchorSideBottom.Side = asrBottom
+      Left = 334
+      Height = 25
+      Hint = 'Find next (Enter, F3)'
+      Top = 6
+      Width = 75
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 8
+      Caption = 'Search'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      OnClick = bSearchClick
+    end
+    object bSearchPrev: TButton
+      AnchorSideLeft.Control = bSearch
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = bSearch
+      AnchorSideBottom.Side = asrBottom
+      Left = 417
+      Height = 25
+      Hint = 'Find previous (Shift+Enter, Shift+F3)'
+      Top = 6
+      Width = 75
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 8
+      Caption = 'Previous'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      OnClick = bSearchPrevClick
+    end
+    object chbMatchCase: TCheckBox
+      AnchorSideLeft.Control = bSearchPrev
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = bSearchPrev
+      AnchorSideBottom.Side = asrBottom
+      Left = 508
+      Height = 19
+      Top = 12
+      Width = 78
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 16
+      Caption = 'Match case'
+      TabOrder = 3
+    end
+    object lInfo: TLabel
+      AnchorSideTop.Control = Panel2
+      AnchorSideRight.Control = Panel2
+      AnchorSideRight.Side = asrBottom
+      Left = 1027
+      Height = 15
+      Top = 8
+      Width = 27
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 8
+      BorderSpacing.Right = 8
+      Caption = 'lInfo'
+      Font.Style = [fsBold, fsItalic]
+      ParentFont = False
+    end
+  end
+  object odPDF: TOpenDialog
+    DefaultExt = '.pdf'
+    Filter = 'PDF Document|*.pdf'
+    Left = 40
+    Top = 88
+  end
+  object sdSave: TSaveDialog
+    Options = [ofOverwritePrompt, ofPathMustExist, ofEnableSizing, ofViewDetail]
+    Left = 96
+    Top = 88
+  end
+end
