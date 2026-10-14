@@ -43,7 +43,7 @@ The package contains **2 visual components** (installed on the **PDFium** tab of
 
 | | |
 |---|---|
-| Operating systems | Windows 32-bit, Windows 64-bit, Linux 64-bit |
+| Operating systems | Windows 32-bit, Windows 64-bit, Linux 64-bit, MacOS arm64 |
 | Compiler | FPC 3.0.4 or newer |
 | IDE | Lazarus 2.0 or newer |
 | PDFium | build **6036** or newer |
